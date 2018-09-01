@@ -9,10 +9,20 @@ variables:
   IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH
 
 stages:
+  - build-latest
   - build-normal
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+build-latest:
+  stage: build-latest
+  script:
+    - docker build -t "$IMAGE_NAME:latest" .
+    - docker images
+    - docker push "$IMAGE_NAME:latest"
+  only:
+    - master
 
 build-normal:
   stage: build-normal
