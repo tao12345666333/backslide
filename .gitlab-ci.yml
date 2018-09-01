@@ -1,0 +1,25 @@
+# Author: Jintao Zhang <zhangjintao9020@gmail.com>
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH
+
+stages:
+  - build-normal
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+build-normal:
+  stage: build-normal
+  script:
+    - docker build -t "$IMAGE_NAME:$CI_COMMIT_REF_SLUG" .
+    - docker images
+    - docker push "$IMAGE_NAME:$CI_COMMIT_REF_SLUG"
+
+after_script:
+  - docker logout $CI_REGISTRY
