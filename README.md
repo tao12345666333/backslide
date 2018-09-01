@@ -1,6 +1,9 @@
 # :sweat_drops: backslide
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Build Status](https://travis-ci.org/tao12345666333/backslide.svg?branch=master)](https://travis-ci.org/tao12345666333/backslide)
+[![pipeline status](https://gitlab.com/taobeier/backslide/badges/master/pipeline.svg)](https://gitlab.com/taobeier/backslide/commits/master)
+[![Docker Build Status](https://img.shields.io/docker/build/taobeier/backslide.svg)](https://hub.docker.com/r/taobeier/backslide/)
 
 
 # What is backslide
